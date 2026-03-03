@@ -1,0 +1,15 @@
+Average Latency Results from Part IV-A:
+US instance:
+- /register average latency: 58.3 ms
+- /list average latency: 70.1 ms
+Europe instance:
+- /register average latency: 350.4 ms
+- /list average latency: 387.1 ms
+
+Eventual Consistency Experiment Results from Part IV-B:
+- Misses out of 100: 0
+
+Discussion:
+The US instance had lower latency because it is closer to my client machine which is in the US, so the network round-trip time is smaller. The Europe instance is farther away, so requests take longer due to additional network distance and routing. In the eventual consistency test, I wrote to the database through the US instance and immediately read from the Europe instance. I saw 0 misses, which suggests the replication delay was small enough in my trials that the Europe read was already seeing the newest write. This still matches eventual consistency behavior because replication is not guaranteed to lag every time. It just means it can lag, but in my run it was fast.
+
+

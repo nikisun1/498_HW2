@@ -1,0 +1,5 @@
+For Part IV, I wrote a client-side Node.js script (client.js) and ran it locally. The script sends HTTP requests to both deployed services, us-central1 and europe-west1.
+
+Part IV-A: The script measures round-trip latency using Date.now(). It sends 10 POST requests to /register on each instance (each time generating a unique username) and records the time for each request. It also sends 10 GET requests to /list on each instance and records those times. After collecting the samples, it computes and prints the average latency for /register and /list on both instances.
+
+Part IV-B: The script runs a loop 100 times. In each iteration, it generates a unique username, sends a POST to /register on the US instance, then immediately sends a GET to /list on the EU instance. It checks whether the new username is present in the returned list and counts how many times it is missing. This count is reported as the number of “misses” to indicate replication lag behavior.
